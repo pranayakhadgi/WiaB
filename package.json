@@ -1,0 +1,26 @@
+{
+  "name": "equipment-inventory",
+  "version": "1.0.0",
+  "description": "I am just building a system to understand the supply chain tech in detail. A better way to do this was to think of a problem within my range (for example: campus equipment inventory to solve the reservation disruptancies). My purpose to build a few exception handliung)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranayakhadgi/WiaB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pranayakhadgi/WiaB/issues"
+  },
+  "homepage": "https://github.com/pranayakhadgi/WiaB#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "node-pg-migrate": "^8.0.4",
+    "pg": "^8.18.0"
+  }
+}
