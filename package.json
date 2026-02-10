@@ -4,7 +4,8 @@
   "description": "I am just building a system to understand the supply chain tech in detail. A better way to do this was to think of a problem within my range (for example: campus equipment inventory to solve the reservation disruptancies). My purpose to build a few exception handliung)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/pranayakhadgi/WiaB#readme",
   "dependencies": {
     "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "node-pg-migrate": "^8.0.4",
     "pg": "^8.18.0"
   }
