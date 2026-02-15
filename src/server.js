@@ -8,7 +8,11 @@ const db = require('./config/database');
 const app = express();
 const organizationsRouter = require('./routes/organizations');
 app.use('/organizations', organizationsRouter);
+const itemsRouter = require('./routes/items');
+app.use('/items', itemsRouter);
 const PORT = process.env.PORT || 3000;
+const reservationsRouter =  require('./routes/reservations');
+app.use('/reservations', reservationsRouter);
 
 //middleware typshit
 app.use(express.json());

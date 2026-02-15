@@ -9,4 +9,9 @@ an ER diagram to get started. I'll put more details into it later.
 
 also started the action, demo CI workflow initalized!
 
+- 2026-02-14: Moved project to `wiab` folder.
+
+
+
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/25139aae-83bb-4624-8252-6b32e0f79e52" />
 
