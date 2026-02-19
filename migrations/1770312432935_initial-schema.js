@@ -1,5 +1,6 @@
 exports.up = (pgm) => {
 //organizations table
+  //note that this is just a sample structure that defines a structural data set to be migrated into the gre platform
 pgm.createTable('organizations', {
 organization_id: { type: 'serial', primaryKey: true},
 name: { type: 'varchar(100)', notNull: true },
