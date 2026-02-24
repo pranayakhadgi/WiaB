@@ -15,6 +15,8 @@ app.use('/items', itemsRouter);
 const PORT = process.env.PORT || 3000;
 const reservationsRouter = require('./routes/reservations');
 app.use('/reservations', reservationsRouter);
+const discrepanciesRouter = require('./routes/discrepancies');
+app.use('/discrepancies', discrepanciesRouter)
 
 //route placeholder
 app.get('/', (req, res) => {
