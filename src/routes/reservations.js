@@ -57,32 +57,59 @@ router.get('/', async (req, res) => {
     `);
 
         res.json({
-            count: result.rowCount,
-            data: result.rows
+            count: result.rows,
+            data: result.rowCount
         });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
 });// GET /reservations - List all reservations with details
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
+    const reservationId = req.params.id;
     try {
-        const result = await db.query(`
+        const reservationResult = await db.query(`
       SELECT 
         r.reservation_id,
         o.name as organization_name,
         l.name as location_name,
         r.start_time,
         r.end_time,
-        r.status
+        r.status,
+        o.organization_id,
+        o.contact_email,
+        l.location_id,
+        l.name as location_name,
+        l.type as location_type
       FROM reservations r
       JOIN organizations o ON r.organization_id = o.organization_id
       LEFT JOIN locations l ON r.location_id = l.location_id
-      ORDER BY r.start_time DESC
-    `);
+      WHERE r.reservation_id = $1
+    `, [reservationId]);
+
+        if (reservationResult.rowCount === 0) {
+            return res.status(404).json({ error: 'Reservation not found' });
+        }
+
+        // now the items with discrepancies
+        const itemsResult = await db.query(`
+        SELECT
+        ri.reservation_item_id,
+        i.item_id,
+        i.name as item_name,
+        ri.quantity_requested,
+        ri.quantity_returned,
+        d.discrepancy_id,
+        d.type as discrepancy_type,
+        d.status as discrepancy_status
+        FROM reservation_items ri
+        JOIN items i ON ri.item_id = i.item_id
+        LEFT JOIN discrepancies d ON ri.reservation_item_id = d.reservation_item_id
+        WHERE ri.reservation_id = $1
+    `, [reservationId]);
 
         res.json({
-            count: result.rowCount,
-            data: result.rows
+            count: itemsResult.rows,
+            data: itemsResult.rowsCount
         });
     } catch (err) {
         res.status(500).json({ error: err.message });
